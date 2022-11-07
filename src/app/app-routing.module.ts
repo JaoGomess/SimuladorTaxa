@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { MercadoPagoComponent } from './mercado-pago/mercado-pago.component';
+import { PageNotFoundComponent } from './share/page-not-found/page-not-found.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
+  { path: 'mp', component: MercadoPagoComponent},
+  { path: '**', component: PageNotFoundComponent}
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

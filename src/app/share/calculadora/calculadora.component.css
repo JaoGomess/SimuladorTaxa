@@ -1,0 +1,19 @@
+.filtro {
+    box-sizing: border-box;
+
+    border-spacing: 0px;
+    border-radius: 4px 4px 4px 4px;
+    border: solid 1px;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
