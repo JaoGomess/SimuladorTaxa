@@ -1,0 +1,43 @@
+<div class="col-md-12">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+    Vendas com maquininha
+    <span class="form-check-sign"></span>
+</div>
+
+
+<div class="col-md-8 p-lg-5 mx-auto my-6">
+    <!--             <div class="form-check form-check-radio">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        Vendas com maquininha
+                        <span class="form-check-sign"></span>
+                    </label>
+                </div> -->
+    
+    <form #myForm="ngForm" (submit)="submitForm(myForm)" novalidate>
+        <!-- Gender -->
+        <div>
+           <input id="male" type="radio" class="custom-control-input" value="male" name="gender" ngModel required>
+           <label class="custom-control-label" for="male">Male</label>
+        </div>
+        <div>
+           <input id="female" type="radio" class="custom-control-input" value="female" name="gender" ngModel required>
+           <label class="custom-control-label" for="female">Female</label>
+        </div>
+        <div *ngIf="isSubmitted && myForm.invalid">
+           <p>Please select either value</p>
+        </div>
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-danger btn-lg btn-block">Find out gender</button>
+     </form><!-- Form ends -->
+                
+            </div>
+                <!-- <div class="col-md-6">
+    
+                </div> -->
+    
+    <!--               <form class="form-horizontal">
+                       
+                    </div>
+    
+                  </form> -->

@@ -21,6 +21,9 @@ import { CieloComponent } from './cielo/cielo.component';
 import { PagseguroComponent } from './pagseguro/pagseguro.component';
 import { CalculadoraComponent } from './share/calculadora/calculadora.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -42,9 +45,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
+    MatIconModule,
+    FormsModule,
     MatFormFieldModule,
     MatRadioModule,
     MatInputModule,
+    MatSelectModule,
     NgbModule
   ],
   providers: [],

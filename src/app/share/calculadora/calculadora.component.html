@@ -1,24 +1,57 @@
 <div class="container">
-    <div class="row" class="filtro">
+    <!-- separar por rows -->
+    <div class="row" class="filtro bg-light">
+        <div class="position-relative p-3 p-md-5">
+            <div class="text-center">
+                <legend>Veja quanto você recebe nas vendas no crédito, débito e parcelado</legend>
+            </div>
+
+        </div>
+        <div class="form-check"> 
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="equals" id="maquina" checked>
+                <label class="form-check-label" for="maquina">Vendas com maquininha</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="equals" id="internet">
+                <label class="form-check-label" for="internet">Vendas pela Internet</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="equals" id="aluguel"[disabled]="estado">
+                <label class="form-check-label" for="aluguel">Aluguel</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Marca:</mat-label>
+                <mat-select [(ngModel)]="selectedMarca" (ngModelChange)="getMarca($event)">
+                    <mat-option *ngFor="let i of listaMarcas" [value]="i.id">
+                        {{i.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Forma de Pagamento</mat-label>
+                <mat-select [(ngModel)]="selectedOption" (ngModelChange)="getOption($event)">
+                    <mat-option *ngFor="let i of listaOpc" [value]="i.id">
+                        {{i.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" floatLabel="always">
+                <mat-label>Digite o valor</mat-label>
+                <input matInput type="number" placeholder="0" [(ngModel)]="money" (input)="getDinheiro($event)">
+                <span matPrefix>R$&nbsp;</span>
+            </mat-form-field>
+        </div>
         <div class="col-md-3">
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                    Vendas com maquininha
-                    <span class="form-check-sign"></span>
-                </label>
-            </div>
-            <div class="form-check form-check-radio">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" >
-                    Vendas pela Internet
-                    <span class="form-check-sign"></span>
-                </label>
-            </div>
-            
+            <legend>Você recebe</legend>
+            <p>Na hora:</p>
+            <p>Em 14 Dias:</p>
+            <p>Em 30 Dias:</p>
         </div>
     </div>
 </div>
-
-
-
