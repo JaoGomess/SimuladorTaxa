@@ -5,33 +5,6 @@ export interface lista {
 }
 
 
-export interface Marcas {
-    id: Number,
-    taxaDebito: Number,
-    taxaCreditoAvista: Number,
-    taxaCreditoParcelado: Number,
-    viewValue: String,
-    aluguel?: Boolean,
-    aluguelOptions?: {
-        taxaDebito: Number,
-        taxaCreditoAvista: Number,
-        taxaCreditoParcelado: Number
-    }[],
-    qrCode?: Boolean,
-    qrCodeOptions?: {
-        taxaDebito: Number,
-        taxaCreditoAvista: Number,
-        taxaCreditoParcelado: Number
-    }[],
-    link?: Boolean,
-    linkOptions?: {
-        taxaDebito: Number,
-        taxaCreditoAvista: Number,
-        taxaCreditoParcelado: Number
-    }[]  
-}
-
-
 /* Cielo 2,99 por parcela - n tem info de afters... */
 
 /* PagSeguro  
@@ -47,7 +20,7 @@ export interface Marcas {
 export interface MaquinasTaxas {
     id: Number,
     marca: String,
-    alguel?: Boolean,
+    aluguel?: Boolean,
     valorPorParcela?: Number,
     aluguelOptions?: {
         vista: Number,

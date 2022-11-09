@@ -9,32 +9,36 @@
         </div>
         <div class="form-check"> 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="equals" id="maquina" checked>
-                <label class="form-check-label" for="maquina">Vendas com maquininha</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="equals" id="internet">
-                <label class="form-check-label" for="internet">Vendas pela Internet</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="equals" id="aluguel"[disabled]="estado">
-                <label class="form-check-label" for="aluguel">Aluguel</label>
+                <div *ngFor="let option of options">
+                    <div class="radio">
+                        <input type="radio"
+                           name="radio"
+                           id="radio-{{option.id}}"
+                           [(ngModel)]="value"
+                           [value]="option.value"
+                           [disabled]="option.estado"
+                           />
+            
+                    <label for="radio-{{option.id}}">{{option.id}}
+                    </label>
+            
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Marca:</mat-label>
-                <mat-select [(ngModel)]="selectedMarca" (ngModelChange)="getMarca($event)">
-                    <mat-option *ngFor="let i of listaMarcas" [value]="i.id">
-                        {{i.viewValue}}
+                <mat-select [(ngModel)]="viewMarca" (ngModelChange)="getMarca($event)" required>
+                    <mat-option *ngFor="let i of listaTaxa" [value]="i.id">
+                        {{i.marca}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Forma de Pagamento</mat-label>
-                <mat-select [(ngModel)]="selectedOption" (ngModelChange)="getOption($event)">
+                <mat-select [(ngModel)]="selectedOption" (ngModelChange)="getOption($event)" required>
                     <mat-option *ngFor="let i of listaOpc" [value]="i.id">
                         {{i.viewValue}}
                     </mat-option>
@@ -43,14 +47,18 @@
             <br>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Digite o valor</mat-label>
-                <input matInput type="number" placeholder="0" [(ngModel)]="money" (input)="getDinheiro($event)">
+                <input matInput type="number" placeholder="0" [(ngModel)]="selectedQuantia" (input)="getDinheiro($event)">
                 <span matPrefix>R$&nbsp;</span>
             </mat-form-field>
+            <br>
+            <button type="button" (click)="calcularTaxa()">Calcular</button>
         </div>
         <div class="col-md-3">
             <legend>Você recebe</legend>
             <p>Na hora:</p>
-            <p>Em 14 Dias:</p>
+            <!-- {opcaoSelecionada ? <p>Em 14 dias: blablabla</p> : <p>Escolha uma opcao para visualizar os resultados</p>} -->
+            {{quantParcelas ? quantParcelas  : 'Escolha uma opc'}}
+           <!--  {{optionsParcelas ? <p>Em 14 dias: blablabla</p> : <p>Escolha uma opcao para visualizar os resultados</p>}} -->
             <p>Em 30 Dias:</p>
         </div>
     </div>
