@@ -25,7 +25,7 @@ export class CalculadoraComponent implements OnInit {
       id: 2,
       marca: "Cielo",
       aluguel: true,
-      valorPorParcela: 2.99,
+      valorPorParcela: 0.029,
       aluguelOptions: [{ vista: 1.99, creditoVista: 4.49, creditoParcelado: 4.49 }],
       debit: [{ vista: 2.39 }],
       creditTime: [{ vista: 4.99, parcelado: 5.59 }],
@@ -43,7 +43,7 @@ export class CalculadoraComponent implements OnInit {
   ];
 
   public listaOpc: lista[] = [
-    { id: 1, value: 99, viewValue: 'Débito' },
+    { id: 1, value: 99, viewValue: 'Débito', functionName: 'debito' },
     { id: 2, value: 100, viewValue: 'Crédito a vista' },
     { id: 3, value: 2, viewValue: '2 Parcelas' },
     { id: 4, value: 3, viewValue: '3 Parcelas' },
@@ -64,47 +64,113 @@ export class CalculadoraComponent implements OnInit {
     { id: 19, value: 18, viewValue: '18 Parcelas' }
   ];
 
-  public estados: boolean;
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor selecionado do input numa public, mostrando tudo do objeto da lista de opções;
+   * @type Object;
+  */
 
-  public objectOptions: Object;
-  public quantParcelas: Number;
+  public optionObject: Object;
 
-  public viewMarca: string;
-  public listaMarca: Object;
-  public selectedOption: string;
-  public selectedQuantia: Number;
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor selecionado do input numa public, mostrando apenas o ID da opção;
+   * @type Number;
+  */
 
+  public optionID: Number;
 
-  public listaMarcaDebito: any;
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor selecionado do input numa public, mostrando apenas o nome visual;
+   * @type String;
+  */
 
-  public radioMaquina: string;
-  public radioAlugado: String
-  public value: number;
+  public optionView: string;
+
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor selecionado do input numa public, mostrando apenas o nome visual;
+   * @type String;
+  */
+
+  public marcaView: string;
+
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor selecionado do input numa public, mostrando tudo do objeto da lista de opções;
+   * @type Object;
+  */
+
+  public marcaLista: Object;
+
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor inserido do input
+   * @type Number;
+  */
+
+  public valor: Number;
+
+  /**
+   * @author João Gomes
+   * @description Usa-se para atribuir o valor selecionado do input numa public, mostrando apenas o nome visual;
+   * @name value;
+   * @type any;
+  */
+
+  public value: any;
+
+  // Usado para afins de teste de mostrar o resultado na tela
+  public mostrar: Number;
+
+  /**
+   * @author João Gomes
+   * @description Um array de objetos, utilizado para a geração dos tipos dos inputs no html
+   * @type Array<Object>;
+  */
 
   public options = [
     {value: 1, id:"Vendas com maquininha", estado: false},
     {value: 2, id:"Aluguel", estado: true},
   ]
 
-  constructor(public route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute) {}
 
+  ngOnInit(): void { }
+
+  /**
+   * @author João Gomes
+   * @method getOption()
+   * @description Metodo usado para pegar a opção de forma de pagamento escolhida;
+   * @returns this.objectOptions<Object> , this.quantParcelas<Number>;
+  */
+
+  getOption(optionValue) {
+    return this.optionObject = this.listaOpc[optionValue - 1], this.optionID = this.listaOpc[optionValue - 1].value;
   }
 
+  /**
+   * @author João Gomes
+   * @method getValor()
+   * @description Metodo usado para pegar o valor inputado do campo de input de valores;
+   * @returns this.valor<Number>;
+  */
 
-  ngOnInit(): void { 
-    this.estados = true;
-    this.radioAlugado = "";
-    this.radioMaquina = "";
-    this.radioMaquina =  this.route.snapshot.params['radioMaquina'];
+  getValor(getValue) {
+    if (getValue.target.value > 0 && getValue.target.value !== "") return this.valor = getValue.target.value;
   }
 
-  getOption(selectedOption) {
-    return this.objectOptions = this.listaOpc[selectedOption - 1], this.quantParcelas = this.listaOpc[selectedOption - 1].value;
-  }
+  /**
+   * @author João Gomes
+   * @method updateInputs()
+   * @description Metodo usado para verificar se a marca seleciona, tem a opção de alguel. Caso tenha
+   * Ativa-se o input de "aluguel" para ser marcado;
+  */
 
-  getMarca(selectedMarca) {
-    this.listaMarca = this.listaTaxa[selectedMarca - 1];
-    if (this.listaTaxa[selectedMarca - 1].aluguel) {
+  updateInputs(getMarca) {
+    this.marcaLista = this.listaTaxa[getMarca - 1];
+    if (this.listaTaxa[getMarca - 1].aluguel) {
       this.options = [
         {value: 1, id:"Vendas com maquininha", estado: false},
         {value: 2, id:"Aluguel", estado: false},
@@ -117,17 +183,47 @@ export class CalculadoraComponent implements OnInit {
     }
   }
 
-
-
+  /**
+   * @author João Gomes
+   * @method calcularTaxa()
+   * @description Metodo usado para efetuar o calculo das taxas e mostrar ao usuário;
+   * @returns ;
+  */
 
   calcularTaxa() {
-    
-    // console.log('this.value', this.options[this.value - 1]);
-    // console.log(this.radioMaquina);
+    if (!this.value) return alert('Selecione algumas das opções de seleção');
+    if (!this.marcaLista) return alert('Selecione alguma marca');
+    if (!this.optionObject) return alert('Selecione alguma forma de pagamento');
+    if (!this.valor) return alert('Insira algum valor');
 
-    /* Quando tem o ngModel, ele ignora o checked e n fica inputado */
+    // this.value = 2 "Input de Aluguel"
+    if (this.value == 2) {
+      
+      this.calcular(this.optionID, this.valor, this.marcaLista['aluguelOptions'][0], this.marcaLista['valorPorParcela']);
+    } else {
 
-    /* Como colocar outro ngmodel aonde tem um [disable] para ativar e ativar o botao, sendo q n deixa */
+    }
+    if (this.marcaLista['aluguel']) {
+      console.log(this.value)
+      
+      // this.calcular(this.optionID, this.);
+      // this.calcular(this.quantParcelas, this.listaTaxa[1].valorPorParcela, this.selectedQuantia);
+      // console.log(this.objectOptions);
+      // console.log(this.quantParcelas);
+      // console.log(this.listaMarca['credialuguelOptionstTime'][0].vista);
+      // console.log(this.listaMarca['credialuguelOptionstTime'][0].creditoVista);
+      // console.log(this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado);
+      
+    /* Option Alugado */
+    // this.listaMarca['aluguel'] /* Verifica se tem a opc de aluguel */
+    // this.listaMarca['credialuguelOptionstTime'][0].vista /* Pegando a taxa do valor em debito*/
+    // this.listaMarca['credialuguelOptionstTime'][0].creditoVista /* Pegando a taxa do valor em credito na hora a vista*/
+    // this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado /* Pegando a taxa do valor em credito na hora parcelado*/
+    } else {
+
+    }
+
+
     
     // this.listaMarca['debit'][0].vista /* Pegando a taxa do valor em debito */
     //this.listaMarca['debit'][0].obsVista /* Pegando a obs do valor em debito, caso tenha */
@@ -137,16 +233,20 @@ export class CalculadoraComponent implements OnInit {
 
     //this.listaMarca['valorPorParcela'] /* Valor por parcela da Cielo*/
 
-    /* Option Alugado */
-   // this.listaMarca['aluguel'] /* Verifica se tem a opc de aluguel */
-    //this.listaMarca['credialuguelOptionstTime'][0].vista /* Pegando a taxa do valor em debito*/
-    //this.listaMarca['credialuguelOptionstTime'][0].creditoVista /* Pegando a taxa do valor em credito na hora a vista*/
-    //this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado /* Pegando a taxa do valor em credito na hora parcelado*/
-
   }
+  
 
-  getDinheiro(selectedQuantia) {
-    if (selectedQuantia.target.value > 0 && selectedQuantia.target.value !== "") {
+  calcular(type, money, parcela: Object, porParcela?: Number) {
+    switch(type) {
+      case 99:
+        return this.mostrar = money * parcela['vista'];
+      case 100:
+        return this.mostrar = money * parcela['creditoVista'];
+      case 2:
+        return this.mostrar = money * parcela['creditoParcelado'];
+      case 3:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + porParcela);
+        else return this.mostrar = money * parcela['creditoParcelado'];
     }
   }
 }

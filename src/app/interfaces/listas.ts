@@ -1,7 +1,8 @@
 export interface lista {
     id: Number,
     value: Number,
-    viewValue: String
+    viewValue: String,
+    functionName?: String
 }
 
 
@@ -24,6 +25,12 @@ export interface MaquinasTaxas {
     valorPorParcela?: Number,
     aluguelOptions?: {
         vista: Number,
+        creditoVista: Number,
+        creditoParcelado: Number
+    }[],
+    infoGeral?: {
+        vista: Number
+        obsVista?: String,
         creditoVista: Number,
         creditoParcelado: Number
     }[],

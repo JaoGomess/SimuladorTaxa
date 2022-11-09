@@ -29,7 +29,7 @@
         <div class="form-group">
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Marca:</mat-label>
-                <mat-select [(ngModel)]="viewMarca" (ngModelChange)="getMarca($event)" required>
+                <mat-select [(ngModel)]="marcaView" (ngModelChange)="updateInputs($event)" required>
                     <mat-option *ngFor="let i of listaTaxa" [value]="i.id">
                         {{i.marca}}
                     </mat-option>
@@ -38,7 +38,7 @@
             <br>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Forma de Pagamento</mat-label>
-                <mat-select [(ngModel)]="selectedOption" (ngModelChange)="getOption($event)" required>
+                <mat-select [(ngModel)]="optionView" (ngModelChange)="getOption($event)" required>
                     <mat-option *ngFor="let i of listaOpc" [value]="i.id">
                         {{i.viewValue}}
                     </mat-option>
@@ -47,7 +47,7 @@
             <br>
             <mat-form-field appearance="fill" floatLabel="always">
                 <mat-label>Digite o valor</mat-label>
-                <input matInput type="number" placeholder="0" [(ngModel)]="selectedQuantia" (input)="getDinheiro($event)">
+                <input matInput type="number" placeholder="0" [(ngModel)]="valor" (input)="getValor($event)">
                 <span matPrefix>R$&nbsp;</span>
             </mat-form-field>
             <br>
@@ -56,8 +56,9 @@
         <div class="col-md-3">
             <legend>Você recebe</legend>
             <p>Na hora:</p>
+            {{mostrar ? mostrar : "AQUI VAI SER MOSTRADO"}}
             <!-- {opcaoSelecionada ? <p>Em 14 dias: blablabla</p> : <p>Escolha uma opcao para visualizar os resultados</p>} -->
-            {{quantParcelas ? quantParcelas  : 'Escolha uma opc'}}
+            <!-- {{quantParcelas ? quantParcelas  : 'Escolha uma opc'}} -->
            <!--  {{optionsParcelas ? <p>Em 14 dias: blablabla</p> : <p>Escolha uma opcao para visualizar os resultados</p>}} -->
             <p>Em 30 Dias:</p>
         </div>
