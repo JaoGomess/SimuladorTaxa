@@ -12,18 +12,12 @@ import { lista, MaquinasTaxas } from 'src/app/interfaces/listas';
 })
 export class CalculadoraComponent implements OnInit {
 
-//   infoGeral?: {
-//     vista: Number
-//     obsVista?: String,
-//     creditoVista: Number,
-//     creditoParcelado: Number
-// }[],
   public listaTaxa: MaquinasTaxas[] = [
     {
       id: 1,
       marca: "PagSeguro",
       infoGeral: [
-        { vista: 1.99, obsVista: "Após um ano a taxa passará a ser de 2.39%", creditoVista: 4.99, creditoParcelado: 5.99 }
+        { vista: 0.019, obsVista: "Após um ano a taxa passará a ser de 2.39%", creditoVista: 0.049, creditoParcelado: 0.059 }
       ],
       after14: [{ vista: 4.99, parcelado: 5.59 }],
       after30: [{ vista: 4.99, parcelado: 5.59 }]
@@ -33,9 +27,9 @@ export class CalculadoraComponent implements OnInit {
       marca: "Cielo",
       aluguel: true,
       valorPorParcela: 0.029,
-      aluguelOptions: [{ vista: 1.99, creditoVista: 4.49, creditoParcelado: 4.49 }],
+      aluguelOptions: [{ vista: 0.019, creditoVista: 0.049, creditoParcelado: 0.049 }],
       infoGeral: [
-        { vista: 2.39, creditoVista: 4.99, creditoParcelado: 5.59 }
+        { vista: 0.023, creditoVista: 0.049, creditoParcelado: 0.059 }
       ],
       after14: [{ vista: 0.0, parcelado: 0.0 }],
       after30: [{ vista: 0.0, parcelado: 0.0 }]
@@ -213,32 +207,12 @@ export class CalculadoraComponent implements OnInit {
 
     } else {
       // Marcas: Cielo ou PagSeguro
-
       this.calcular(this.optionID, this.valor, this.marcaLista['infoGeral'][0])
     }
-
-      // console.log(this.listaMarca['credialuguelOptionstTime'][0].vista);
-      // console.log(this.listaMarca['credialuguelOptionstTime'][0].creditoVista);
-      // console.log(this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado);
-      
-    /* Option Alugado */
-    // this.listaMarca['aluguel'] /* Verifica se tem a opc de aluguel */
-    // this.listaMarca['credialuguelOptionstTime'][0].vista /* Pegando a taxa do valor em debito*/
-    // this.listaMarca['credialuguelOptionstTime'][0].creditoVista /* Pegando a taxa do valor em credito na hora a vista*/
-    // this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado /* Pegando a taxa do valor em credito na hora parcelado*/
-    
-    // this.listaMarca['debit'][0].vista /* Pegando a taxa do valor em debito */
-    //this.listaMarca['debit'][0].obsVista /* Pegando a obs do valor em debito, caso tenha */
-    
-    //this.listaMarca['creditTime'][0].vista /* Pegando a taxa do valor em credito na hora a vista*/
-    //this.listaMarca['creditTime'][0].parcelado /* Pegando a taxa do valor em credito na hora parcelado*/
-
-    //this.listaMarca['valorPorParcela'] /* Valor por parcela da Cielo*/
-
   }
   
 
-  calcular(type, money, parcela: Object, porParcela?: Number) {
+  calcular(type, money, parcela: Object, porParcela?: number) {
     switch(type) {
       case 99:
         return this.mostrar = money * parcela['vista'];
@@ -247,7 +221,52 @@ export class CalculadoraComponent implements OnInit {
       case 2:
         return this.mostrar = money * parcela['creditoParcelado'];
       case 3:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + porParcela);
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 4:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 5:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 6:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 7:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 8:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 9:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 10:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 11:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 12:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 13:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 14:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 15:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 16:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 17:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+        else return this.mostrar = money * parcela['creditoParcelado'];
+      case 18:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
         else return this.mostrar = money * parcela['creditoParcelado'];
     }
   }
