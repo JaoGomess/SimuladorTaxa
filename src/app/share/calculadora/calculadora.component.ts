@@ -220,53 +220,8 @@ export class CalculadoraComponent implements OnInit {
         return this.mostrar = money * parcela['creditoVista'];
       case 2:
         return this.mostrar = money * parcela['creditoParcelado'];
-      case 3:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 4:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 5:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 6:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 7:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 8:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 9:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 10:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 11:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 12:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 13:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 14:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 15:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 16:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 17:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
-        else return this.mostrar = money * parcela['creditoParcelado'];
-      case 18:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela * type));
+      default:
+        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela)*type);
         else return this.mostrar = money * parcela['creditoParcelado'];
     }
   }
