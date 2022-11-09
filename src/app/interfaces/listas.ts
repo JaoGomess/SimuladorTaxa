@@ -29,26 +29,18 @@ export interface MaquinasTaxas {
         creditoParcelado: Number
     }[],
     infoGeral?: {
-        vista: Number
+        vista?: Number
         obsVista?: String,
-        creditoVista: Number,
-        creditoParcelado: Number
-    }[],
-    debit?: {
-        vista: Number, /* 1,99  */
-        obsVista?: String, /* Informar que depois de um ano a taxa passara a ser 2,39 */
-    }[],
-    creditTime?: { /* Crédito na hora */
-        vista: Number, /* 4,99 a vista */
-        parcelado?: Number /* 5,59 por parcela */
+        creditoVista?: Number,
+        creditoParcelado?: Number
     }[],
     after14?: {
-        vista: Number, /* 3,99 a vista */
-        parcelado?: Number /* 4,59 por parcela */
+        vista: Number,
+        parcelado?: Number 
     }[],
     after30?: {
-        vista: Number, /* 3,19 a vista */
-        parcelado?: Number /* 3,9 por parcela */
+        vista: Number, 
+        parcelado?: Number 
     }[]
 }
 

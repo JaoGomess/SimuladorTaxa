@@ -12,12 +12,19 @@ import { lista, MaquinasTaxas } from 'src/app/interfaces/listas';
 })
 export class CalculadoraComponent implements OnInit {
 
+//   infoGeral?: {
+//     vista: Number
+//     obsVista?: String,
+//     creditoVista: Number,
+//     creditoParcelado: Number
+// }[],
   public listaTaxa: MaquinasTaxas[] = [
     {
       id: 1,
       marca: "PagSeguro",
-      debit: [{ vista: 1.99, obsVista: "Após um ano a taxa passará a ser de 2.39%" }],
-      creditTime: [{ vista: 4.99, parcelado: 5.59 }],
+      infoGeral: [
+        { vista: 1.99, obsVista: "Após um ano a taxa passará a ser de 2.39%", creditoVista: 4.99, creditoParcelado: 5.99 }
+      ],
       after14: [{ vista: 4.99, parcelado: 5.59 }],
       after30: [{ vista: 4.99, parcelado: 5.59 }]
     },
@@ -27,16 +34,18 @@ export class CalculadoraComponent implements OnInit {
       aluguel: true,
       valorPorParcela: 0.029,
       aluguelOptions: [{ vista: 1.99, creditoVista: 4.49, creditoParcelado: 4.49 }],
-      debit: [{ vista: 2.39 }],
-      creditTime: [{ vista: 4.99, parcelado: 5.59 }],
+      infoGeral: [
+        { vista: 2.39, creditoVista: 4.99, creditoParcelado: 5.59 }
+      ],
       after14: [{ vista: 0.0, parcelado: 0.0 }],
       after30: [{ vista: 0.0, parcelado: 0.0 }]
     },
     {
       id: 3,
       marca: "MercadoPago",
-      debit: [{ vista: 1.99 }],
-      creditTime: [{ vista: 4.74 }],
+      infoGeral: [
+        { vista: 1.99, creditoVista: 4.74}
+      ],
       after14: [{ vista: 3.79 }],
       after30: [{ vista: 3.03 }]
     },
@@ -198,18 +207,16 @@ export class CalculadoraComponent implements OnInit {
 
     // this.value = 2 "Input de Aluguel"
     if (this.value == 2) {
-      
       this.calcular(this.optionID, this.valor, this.marcaLista['aluguelOptions'][0], this.marcaLista['valorPorParcela']);
-    } else {
+    } else if (this.marcaLista == this.listaTaxa[2]) {
+      // Marca: Mercado Pago
 
+    } else {
+      // Marcas: Cielo ou PagSeguro
+
+      this.calcular(this.optionID, this.valor, this.marcaLista['infoGeral'][0])
     }
-    if (this.marcaLista['aluguel']) {
-      console.log(this.value)
-      
-      // this.calcular(this.optionID, this.);
-      // this.calcular(this.quantParcelas, this.listaTaxa[1].valorPorParcela, this.selectedQuantia);
-      // console.log(this.objectOptions);
-      // console.log(this.quantParcelas);
+
       // console.log(this.listaMarca['credialuguelOptionstTime'][0].vista);
       // console.log(this.listaMarca['credialuguelOptionstTime'][0].creditoVista);
       // console.log(this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado);
@@ -219,11 +226,6 @@ export class CalculadoraComponent implements OnInit {
     // this.listaMarca['credialuguelOptionstTime'][0].vista /* Pegando a taxa do valor em debito*/
     // this.listaMarca['credialuguelOptionstTime'][0].creditoVista /* Pegando a taxa do valor em credito na hora a vista*/
     // this.listaMarca['credialuguelOptionstTime'][0].creditoParcelado /* Pegando a taxa do valor em credito na hora parcelado*/
-    } else {
-
-    }
-
-
     
     // this.listaMarca['debit'][0].vista /* Pegando a taxa do valor em debito */
     //this.listaMarca['debit'][0].obsVista /* Pegando a obs do valor em debito, caso tenha */
