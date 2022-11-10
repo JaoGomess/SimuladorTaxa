@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { lista, MaquinasTaxas } from 'src/app/interfaces/listas';
 
-
-
-@Component({
-  selector: 'app-calculadora',
-  templateUrl: './calculadora.component.html',
-  styleUrls: ['./calculadora.component.css']
+@Component({ selector: 'app-calculadora', templateUrl: './calculadora.component.html',
+styleUrls: ['./calculadora.component.css']
 })
 export class CalculadoraComponent implements OnInit {
 
@@ -126,6 +121,7 @@ export class CalculadoraComponent implements OnInit {
 
   // Usado para afins de teste de mostrar o resultado na tela
   public mostrar: Number;
+  public desconto: Number;
 
   /**
    * @author João Gomes
@@ -134,13 +130,17 @@ export class CalculadoraComponent implements OnInit {
   */
 
   public options = [
-    {value: 1, id:"Vendas com maquininha", estado: false},
-    {value: 2, id:"Aluguel", estado: true},
+    {value: 1, id:"Vendas com Maquininha", estado: false},
+    {value: 2, id:"Maquininha Alugavel⠀⠀⠀", estado: true},
   ]
+
+  public estado: boolean;
 
   constructor(public route: ActivatedRoute) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.estado = false;
+   }
 
   /**
    * @author João Gomes
@@ -175,13 +175,13 @@ export class CalculadoraComponent implements OnInit {
     this.marcaLista = this.listaTaxa[getMarca - 1];
     if (this.listaTaxa[getMarca - 1].aluguel) {
       this.options = [
-        {value: 1, id:"Vendas com maquininha", estado: false},
-        {value: 2, id:"Aluguel", estado: false},
+        {value: 1, id:"Vendas com Maquininha", estado: false},
+        {value: 2, id:"Maquininha Alugavel⠀⠀⠀", estado: false},
       ]
     } else {
       this.options = [
-        {value: 1, id:"Vendas com maquininha", estado: false},
-        {value: 2, id:"Aluguel", estado: true},
+        {value: 1, id:"Vendas com Maquininha", estado: false},
+        {value: 2, id:"Maquininha Alugavel⠀⠀⠀", estado: true},
       ]
     }
   }
@@ -213,16 +213,25 @@ export class CalculadoraComponent implements OnInit {
   
 
   calcular(type, money, parcela: Object, porParcela?: number) {
+    var subtrair;
     switch(type) {
       case 99:
-        return this.mostrar = money * parcela['vista'];
+        subtrair = money * parcela['vista']
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
       case 100:
-        return this.mostrar = money * parcela['creditoVista'];
+        subtrair = money * parcela['creditoVista'];
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
       case 2:
-        return this.mostrar = money * parcela['creditoParcelado'];
+        subtrair = money * parcela['creditoParcelado'];
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
       default:
-        if (porParcela > 0) return this.mostrar = money * (parcela['creditoParcelado'] + (porParcela)*type);
-        else return this.mostrar = money * parcela['creditoParcelado'];
+        if (porParcela > 0) {
+          subtrair = money * (parcela['creditoParcelado'] + (porParcela)*type);
+          return this.mostrar = money - subtrair, this.desconto = subtrair;
+        } else {
+          subtrair =  money * parcela['creditoParcelado'];
+          return this.mostrar = money - subtrair, this.desconto = subtrair;
+        }
     }
   }
 }
