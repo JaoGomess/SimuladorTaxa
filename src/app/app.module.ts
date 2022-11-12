@@ -24,6 +24,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
+import { CompareDateComponent } from './share/compare-date/compare-date.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {FormsModule} from '@angular/forms';
     MercadoPagoComponent,
     CieloComponent,
     PagseguroComponent,
-    CalculadoraComponent
+    CalculadoraComponent,
+    CompareDateComponent
   ],
   imports: [
     BrowserModule,

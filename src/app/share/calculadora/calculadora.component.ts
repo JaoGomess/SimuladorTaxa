@@ -1,11 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { lista, MaquinasTaxas } from 'src/app/interfaces/listas';
+import { lista, listaPagamentos, listaTaxaDias, MaquinasTaxas } from 'src/app/interfaces/listas';
 
 @Component({ selector: 'app-calculadora', templateUrl: './calculadora.component.html',
 styleUrls: ['./calculadora.component.css']
 })
 export class CalculadoraComponent implements OnInit {
+
+  public meiosPagamento: listaPagamentos[] = [
+    {id: 1, viewValue: 'Débito'},
+    {id: 2, viewValue: 'Credito'}
+  ];
+
+  public viewPagamento: String;
+
+  public listaDias: listaTaxaDias[] = [
+    {id: 4, viewValue: 'Na Hora'},
+    {id: 5, viewValue: 'Após 14 dias:'},
+    {id: 6, viewValue: 'Após 30 dias:'},
+  ];
+
+  public viewDias: String;
 
   public listaTaxa: MaquinasTaxas[] = [
     {
@@ -41,7 +56,7 @@ export class CalculadoraComponent implements OnInit {
   ];
 
   public listaOpc: lista[] = [
-    { id: 1, value: 99, viewValue: 'Débito', functionName: 'debito' },
+    { id: 1, value: 99, viewValue: 'Débito' },
     { id: 2, value: 100, viewValue: 'Crédito a vista' },
     { id: 3, value: 2, viewValue: '2 Parcelas' },
     { id: 4, value: 3, viewValue: '3 Parcelas' },

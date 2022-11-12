@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public listaMaquininhas: any[] = [
+    {id: 1, marca: 'PagSeguro'}
+  ];
+
   constructor() { }
 
   ngOnInit(): void {

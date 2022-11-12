@@ -1,10 +1,18 @@
 export interface lista {
     id: Number,
     value: Number,
-    viewValue: String,
-    functionName?: String
+    viewValue: String
 }
 
+export interface listaPagamentos {
+    id: Number,
+    viewValue: String
+}
+
+export interface listaTaxaDias {
+    id: Number,
+    viewValue: String
+}
 
 /* Cielo 2,99 por parcela - n tem info de afters... */
 

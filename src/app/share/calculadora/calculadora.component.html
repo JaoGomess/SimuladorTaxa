@@ -6,21 +6,17 @@
 
         <div class="row p-4">
             <div class="col-md-5">
-                <div class="select-wrap ">
+
+                <div class="select-wrap">
                     <div *ngFor="let option of options">
                         <div class="form-check text-center form-check-inline">
-                            <input type="radio"
-                                name="radio"
-                                id="radio-{{option.id}}"
-                                [(ngModel)]="value"
-                                [value]="option.value"
-                                [disabled]="option.estado"
-                            />
+                            <input type="radio" name="radio" id="radio-{{option.id}}" [(ngModel)]="value"
+                                [value]="option.value" [disabled]="option.estado" />
                         </div>
                         <label for="radio-{{option.id}}">{{option.id}}</label>
                     </div>
                 </div>
-                
+
                 <div class="select-wrap">
                     <label for="teste">Selecione uma Marca:</label>
                     <select name="teste" class="form-select" [(ngModel)]="marcaView"
@@ -46,14 +42,79 @@
                     <input type="number" [(ngModel)]="valor" (input)="getValor($event)" id="valor" class="form-control">
                 </div>
 
+                <button type="button" (click)="calcularTaxa()" class="select-wrap" id="calc">Calcular</button>
+            </div>
+            <div class="col-md-6">
                 <div class="select-wrap">
-                    <button type="button" (click)="calcularTaxa()">Calcular</button>
+                    <div>
+                        <br>
+                    </div>
+                    <div class="select-wrap">
+                        <label for="teste">Você Recebe:</label>
+                        <input type="hidden" class="form-control">{{mostrar ? mostrar : 0}}
+                    </div>
+                    <br>
+                    <div class="select-wrap">
+                        <label for="teste">Empresa Recebe:</label>
+                        <input type="hidden" class="form-control">{{desconto ? desconto : 0}}
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+     </div>
+</div>
+
+<div class="container containerTaxa">
+    <div class="filtro bg-light">
+        <div class="row text-center p-2 p-md-2">
+            <legend>Veja os valores das Taxas</legend>
+        </div>
+        <div class="row p-4">
+            <div class="col-md-5">
+                <div class="select-wrap">
+                    <label for="teste">Forma de Pagamento:</label>
+                    <select name="teste" class="form-select" [(ngModel)]="viewPagamento" required>
+                        <option *ngFor="let i of meiosPagamento" [value]="i.id">
+                            {{i.viewValue}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="select-wrap">
+                    <div *ngFor="let i of listaDias">
+                        <div class="form-check text-center form-check-inline">
+                            <input type="radio" name="radio" id="radio-{{i.id}}" [(ngModel)]="viewDias" [value]="i.id" />
+                        </div>
+                        <label for="radio-{{i.id}}">{{i.viewValue}}</label>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <legend>Você Recebe:</legend>
-                <p>Valor Total: {{mostrar ? mostrar : 0}}</p>
-                <p>Valor Descontado: {{desconto ? desconto : 0}}</p>
+                <div class="select-wrap">
+                    <div class="select-wrap">
+                        <label for="teste">Você Recebe:</label>
+                        <input type="hidden" class="form-control">{{mostrar ? mostrar : 0}}
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                    <div>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
