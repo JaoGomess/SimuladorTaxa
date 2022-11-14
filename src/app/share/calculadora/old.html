@@ -1,64 +1,139 @@
-<div class="container">
-    <!-- separar por rows -->
-    <div class="row" class="filtro bg-light">
-        <div class="position-relative p-3 p-md-5">
-            <div class="text-center">
+<!-- <div class="fundo">
+    <div class="box">
+        <div class="row text-center p-2 p-md-2">
+            <legend>Veja quanto você recebe nas vendas no crédito, débito e parcelado</legend>
+        </div>
+    </div>
+
+</div> -->
+
+<div style="background-color: #E6E6E6;">
+    <div class="wide">
+        <div class="box">
+            <div class="row text-center p-2 p-md-2">
                 <legend>Veja quanto você recebe nas vendas no crédito, débito e parcelado</legend>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-check text-center form-check-inline"> 
-                <div *ngFor="let option of options">
-                    <div class="radio">
-                        <input type="radio"
-                            name="radio"
-                            id="radio-{{option.id}}"
-                            [(ngModel)]="value"
-                            [value]="option.value"
-                            [disabled]="option.estado"
-                        />
+
+            <div *ngFor="let option of options">
+                <div class="form-check form-check-inline">
+                    <input type="radio" name="radio" id="radio-{{option.id}}" [(ngModel)]="value" [value]="option.value"
+                        [disabled]="option.estado" />
+                </div>
+                <label for="radio-{{option.id}}">{{option.id}}</label>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="select-wrap">
+                        <label for="teste">Selecione uma Marca:</label>
+                        <select name="teste" class="form-select" [(ngModel)]="marcaView"
+                            (ngModelChange)="updateInputs($event)" required>
+                            <option *ngFor="let i of listaTaxa" [value]="i.id">
+                                {{i.marca}}
+                            </option>
+                        </select>
                     </div>
-                    <label for="radio-{{option.id}}">{{option.id}}</label>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="select-wrap">
+                        <label for="teste">Forma de Pagamento:</label>
+                        <select name="teste" class="form-select" [(ngModel)]="optionView"
+                            (ngModelChange)="getOption($event)" required>
+                            <option *ngFor="let i of listaOpc" [value]="i.id">
+                                {{i.viewValue}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="select-wrap">
+                        <label for="teste">Digite o Valor:</label>
+                        <input type="number" [(ngModel)]="valor" (input)="getValor($event)" class="valor"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="button" (click)="calcularTaxa()" class="select-wrap" id="calc">Calcular</button>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-6">
+                    <canvas baseChart
+                    [type]="'pie'"
+                    [datasets]="pieChartDatasets"
+                    [labels]="pieChartLabels"
+                    [options]="pieChartOptions"
+                    [plugins]="pieChartPlugins"
+                    [legend]="pieChartLegend">
+                  </canvas>
+                </div>
+
+                <hr>
+
+                <div class="row text-center p-2 p-md-2">
+                    <legend>Confira as taxas de cada empresa</legend>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="select-wrap">
+                            <label for="teste">Selecione uma Marca:</label>
+                            <select name="teste" class="form-select" [(ngModel)]="marcaView"
+                                (ngModelChange)="updateInputs($event)" required>
+                                <option *ngFor="let i of listaTaxa" [value]="i.id">
+                                    {{i.marca}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="select-wrap">
+                            <label for="teste">Forma de Pagamento:</label>
+                            <select name="teste" class="form-select" [(ngModel)]="viewPagamento" required>
+                                <option *ngFor="let i of meiosPagamento" [value]="i.id">
+                                    {{i.viewValue}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                       
+ <!--                            <div *ngFor="let i of listaDias">
+                                <div class="form-check text-center form-check-inline">
+                                    <input type="radio" name="radio" id="radio-{{i.id}}" [(ngModel)]="viewDias" [value]="i.id" />
+                                </div>
+                                <label for="radio-{{i.id}}">{{i.viewValue}}</label>
+                            </div> -->
+                        
+                    </div>
+
+                    <div class="select-wrap">
+                        <label for="teste">Você Recebe:</label>
+                        <input type="hidden" class="form-control">{{mostrar ? mostrar : 0}}
+                    </div>
                 </div>
             </div>
         </div>
-        
-
-        <div class="form-group">
-            <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label>Marca:</mat-label>
-                <mat-select [(ngModel)]="marcaView" (ngModelChange)="updateInputs($event)" required>
-                    <mat-option *ngFor="let i of listaTaxa" [value]="i.id">
-                        {{i.marca}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label>Forma de Pagamento</mat-label>
-                <mat-select [(ngModel)]="optionView" (ngModelChange)="getOption($event)" required>
-                    <mat-option *ngFor="let i of listaOpc" [value]="i.id">
-                        {{i.viewValue}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label>Digite o valor</mat-label>
-                <input matInput type="number" placeholder="0" [(ngModel)]="valor" (input)="getValor($event)">
-                <span matPrefix>R$&nbsp;</span>
-            </mat-form-field>
-            <br>
-            <button type="button" (click)="calcularTaxa()">Calcular</button>
-        </div>
-        <div class="col-md-3">
-            <legend>Você recebe</legend>
-            <p>Na hora:</p>
-            {{mostrar ? mostrar : "AQUI VAI SER MOSTRADO"}}
-            <!-- {opcaoSelecionada ? <p>Em 14 dias: blablabla</p> : <p>Escolha uma opcao para visualizar os resultados</p>} -->
-            <!-- {{quantParcelas ? quantParcelas  : 'Escolha uma opc'}} -->
-           <!--  {{optionsParcelas ? <p>Em 14 dias: blablabla</p> : <p>Escolha uma opcao para visualizar os resultados</p>}} -->
-            <p>Em 30 Dias:</p>
-        </div>
     </div>
 </div>
+    <!-- <div class="square">
+    <legend></legend>
+    <h1>Square</h1>
+    <p>This div will maintain its aspect ratio.</p>
+</div>
+  
+  <div class="wide">
+    <h1>Wide</h1>
+    <p>This div will maintain its aspect ratio.</p>
+  </div>
+  
+  <div class="tall">
+    <h1>Tall</h1>
+    <p>This div will maintain its aspect ratio.</p>
+  </div> -->

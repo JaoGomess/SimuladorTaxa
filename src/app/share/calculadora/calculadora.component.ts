@@ -13,9 +13,10 @@ export class CalculadoraComponent implements OnInit {
   ];
 
   public viewPagamento: String;
+  public viewMarca: String;
 
   public listaDias: listaTaxaDias[] = [
-    {id: 4, viewValue: 'Na Hora'},
+    {id: 4, viewValue: '⠀⠀⠀⠀Na Hora'},
     {id: 5, viewValue: 'Após 14 dias:'},
     {id: 6, viewValue: 'Após 30 dias:'},
   ];
@@ -155,7 +156,8 @@ export class CalculadoraComponent implements OnInit {
 
   ngOnInit(): void {
     this.estado = false;
-   }
+  }
+
 
   /**
    * @author João Gomes
