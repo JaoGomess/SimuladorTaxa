@@ -1,5 +1,9 @@
+main{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .container {
     max-width: 960px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
   /*
@@ -67,4 +71,40 @@
       flex: 1;
     }
   }
-  
+  .paragrafo{
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    padding-block-start: 20px;
+    padding-block-end: 20px;
+
+  }
+  .titulo{
+    text-align: center;
+    background-color: #04345C;
+    color: #E6E6E6;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  table{
+    border: solid 1px;
+    border-spacing: 0px;
+  }
+  td, th{
+    padding: 5px;
+    border: solid 1px;
+  }
+  h3{
+    text-align: center;
+    background-color: #E6E6E6;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .taxaT{
+    text-align: center;
+    background-color:  #FFFC00;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .logo{
+    align-content: center;
+  }
