@@ -70,6 +70,10 @@ main{
     .flex-md-equal > * {
       flex: 1;
     }
+    img{
+      height: 400px;
+      width: max-content;
+    }
   }
   .paragrafo{
     font-size: medium;
@@ -84,6 +88,7 @@ main{
     background-color: #04345C;
     color: #E6E6E6;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
   }
   table{
     border: solid 1px;
@@ -107,4 +112,17 @@ main{
   }
   .logo{
     align-content: center;
+  }
+  h2{
+    text-align: center;
+  }
+  table,td,th{
+    padding: 5px;
+    border: solid 1px;
+    text-align: center;
+  }
+  .text{
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
   }
