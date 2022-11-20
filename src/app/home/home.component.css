@@ -1,0 +1,21 @@
+.back{
+    background-color: #04345C;
+}
+.back-button{
+    background-color: #FFFC00;
+    color:#04345C;
+    border: none;
+}
+.back-button-modal{
+    background-color: #04345C;
+    border: none;
+}
+#imagenzona{
+    width: 100vw;
+    height: 50vh;
+    background-color: #FFFC00;
+    /* background: url('../../assets/imgs/error404.png'); */
+}
+legend{
+    text-align: center;
+}

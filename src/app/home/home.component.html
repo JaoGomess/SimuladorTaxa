@@ -1,10 +1,114 @@
-<section class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-    <h1 class="display-4 fw-normal">Simutax</h1>
-    <p class="lead fw-normal">Com a Simutax, você pode comparar as taxas e escolher a maquininha que mais se encaixa no seu modelo de negócio.</p>
-    <p>
-        <a [routerLink]="['/calculadora']" class="btn btn-secondary my-2">Calcular as Taxas</a>
-
-    </p>
+<section
+  class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center"
+>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top back">
+    <div class="container-fluid">
+        <img src="../../assets/imgs/cinzaSF.png" alt="">
+      <a class="navbar-brand" href="#">Inicio</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <body>
+    <div class="container-fluid">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <img src="../../assets/imgs/logo2t.png" width="370px">
+            <p class="">
+              Com a Simutax, você pode comparar as taxas e escolher a maquininha que
+              mais se encaixa no seu modelo de negócio.
+            </p>
+          </div>
+    </div>
+    <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="card">
+                      <img src="https://assets.pagseguro.com.br/ps-website-assets/v15.102.3/img/_pswn/moderninha-smart-2/large/business-management-device.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">PagSeguro</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card" >
+                      <img src="https://www.cielo.com.br/assets_cielo/home/clientInstallment/mobile.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Cielo</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="card">
+                      <img src="https://http2.mlstatic.com/storage/pog-cm-admin/calm-assets/point-pro-2-mobile--d712dfb0.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Mercado Pago</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Saiba mais...</a>
+                      </div>
+                    </div>
+              </div>
+          </div>
+          <!-- botão para redirecionar para calculadora de taxas-->
+          <p>
+            <a
+              [routerLink]="['/calculadora']"
+              class="btn btn-lg my-2 back-button"
+              >Calcular as Taxas</a
+            >
+          </p>
+    </div>
+    <!-- Modal do fomrulario para exportar para e-mail -->
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form ngNativeValidate>
+                <legend>Envio de Relatorio para E-mail</legend>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <label>Insira o seu Nome Completo:</label>
+                        <input type="text" name="nome"  class="form-control" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Insira o seu Melhor E-mail:</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>   
+                </div>  
+            </form>
+        </div>
+        <div class="modal-footer">
+           <!--  <div class="col-md-3">
+                        <button class="btn btn-primary">Exportar</button>
+                    </div> -->
+            <button type="button" class="btn btn-success" (click)="c('Save click')">Exportar</button>
+        </div>
+    </ng-template>
+    
+    <button class="btn btn-lg btn-primary back-button-modal" (click)="open(content)">Exportar Relatório</button>
+  </body>
 </section>
+
