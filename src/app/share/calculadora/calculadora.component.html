@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <div class="fundo">
     <div class="box">
         <div class="row text-center p-2 p-md-2">
@@ -39,6 +40,9 @@
         </div>
       </nav>
   <div style="background-color: #e6e6e6">
+=======
+<div style="background-color: #E6E6E6;">
+>>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
     <div class="wide">
       <div class="box">
         <div class="row text-center p-2 p-md-2">
@@ -61,6 +65,7 @@
           <label for="radio-{{ option.id }}">{{ option.id }}</label>
         </div>
 
+<<<<<<< HEAD
         <div class="row">
           <div class="col-md-4">
             <div class="select-wrap">
@@ -227,14 +232,109 @@
               <input type="hidden" class="form-control" />{{
                 mostrar ? mostrar : 0
               }}
+=======
+                    <button type="button" (click)="calcularTaxa()" class="select-wrap" id="calc">Calcular</button>
+                </div>
+
+                <div class="col-md-4">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Você Recebe: </th>
+                            <th scope="col">Valor Taxado:</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">{{mostrar ? mostrar : 0}}</th>
+                            <th >{{desconto ? desconto : 0}}</th>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-6">
+
+                </div>
+                
+                <br>
+                <hr>
+
+                <div class="row text-center p-2 p-md-2">
+                    <legend>Confira as taxas de cada empresa</legend>
+                </div>
+
+                <div>
+                    <div class="form-check text-center form-check-inline">
+                        <input type="radio" name="radio" id="1"/>
+                    </div>
+                    <label for="radio">Na hora</label>
+                    <div class="form-check text-center form-check-inline">
+                        <input type="radio" name="radio" id="1"/>
+                    </div>
+                    <label for="radio">Em 14 Dias</label>
+                    <div class="form-check text-center form-check-inline">
+                        <input type="radio" name="radio" id="1"/>
+                    </div>
+                    <label for="radio">Em 30 Dias</label>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="select-wrap">
+                            <label for="teste">Selecione uma Marca:</label>
+                            <select name="teste" class="form-select" [(ngModel)]="viewMarca"
+                                (ngModelChange)="updateInputs($event)" required>
+                                <option *ngFor="let i of listaTaxa" [value]="i.id">
+                                    {{i.marca}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="select-wrap">
+                            <label for="teste">Forma de Pagamento:</label>
+                            <select name="teste" class="form-select" [(ngModel)]="viewPagamento" required>
+                                <option *ngFor="let i of meiosPagamento" [value]="i.id">
+                                    {{i.viewValue}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">À vista: </th>
+                                <th scope="col">Parcelado:</th>
+                                <th scope="col">Oberservação:</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">{{mostrar ? mostrar : 0}}</th>
+                                <th >{{desconto ? desconto : 0}}</th>
+                                <th >{{desconto ? desconto : 0}}</th>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+>>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
             </div>
           </div>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
 
   <section>
+=======
+</div>
+>>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
     <!-- <div class="square">
     <legend></legend>
     <h1>Square</h1>
@@ -250,5 +350,8 @@
     <h1>Tall</h1>
     <p>This div will maintain its aspect ratio.</p>
   </div> -->
+<<<<<<< HEAD
   </section>
 </section>
+=======
+>>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f

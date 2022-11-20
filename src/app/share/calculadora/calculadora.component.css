@@ -66,6 +66,7 @@ select {
   text-align: center;
   font-family: "Century Gothic", sans-serif;
 }
+<<<<<<< HEAD
 .back{
   background-color: #04345C;
 }
@@ -316,3 +317,5 @@ form:invalid + button {
     margin-right: 12px;
   }
 }
+=======
+>>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
