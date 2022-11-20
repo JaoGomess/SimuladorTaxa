@@ -1,357 +1,136 @@
-<<<<<<< HEAD
-<!-- <div class="fundo">
-    <div class="box">
-        <div class="row text-center p-2 p-md-2">
-            <legend>Veja quanto você recebe nas vendas no crédito, débito e parcelado</legend>
-        </div>
-    </div>
-
-</div> -->
-<section
-  class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center"
->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top back">
-        <div class="container-fluid" id="center">
-          <a class="navbar-brand" [routerLink]="['/home']">Simutax</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Inicio</a>
-              </li>
-           <!--    <li class="nav-item">
-                <a class="nav-link" href="#"></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li> -->
-            </ul>
-          </div>
-        </div>
-      </nav>
-  <div style="background-color: #e6e6e6">
-=======
 <div style="background-color: #E6E6E6;">
->>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
-    <div class="wide">
+  <div class="wide">
       <div class="box">
-        <div class="row text-center p-2 p-md-2">
-          <legend>
-            Veja quanto você recebe nas vendas no crédito, débito e parcelado
-          </legend>
-        </div>
-
-        <div *ngFor="let option of options">
-          <div class="form-check form-check-inline">
-            <input
-              type="radio"
-              name="radio"
-              id="radio-{{ option.id }}"
-              [(ngModel)]="value"
-              [value]="option.value"
-              [disabled]="option.estado"
-            />
-          </div>
-          <label for="radio-{{ option.id }}">{{ option.id }}</label>
-        </div>
-
-<<<<<<< HEAD
-        <div class="row">
-          <div class="col-md-4">
-            <div class="select-wrap">
-              <label for="teste">Selecione uma Marca:</label>
-              <select
-                name="teste"
-                class="form-select"
-                [(ngModel)]="marcaView"
-                (ngModelChange)="updateInputs($event)"
-                required
-              >
-                <option *ngFor="let i of listaTaxa" [value]="i.id">
-                  {{ i.marca }}
-                </option>
-              </select>
-            </div>
-
-            <div class="select-wrap">
-              <label for="teste">Digite o Valor:</label>
-              <input
-                type="number"
-                [(ngModel)]="valor"
-                (input)="getValor($event)"
-                class="valor"
-                class="form-control"
-              />
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="select-wrap">
-              <label for="teste">Forma de Pagamento:</label>
-              <select
-                name="teste"
-                class="form-select"
-                [(ngModel)]="optionView"
-                (ngModelChange)="getOption($event)"
-                required
-              >
-                <option *ngFor="let i of listaOpc" [value]="i.id">
-                  {{ i.viewValue }}
-                </option>
-              </select>
-            </div>
-
-            <button
-              type="button"
-              (click)="calcularTaxa()"
-              class="select-wrap"
-              id="calc"
-            >
-              Calcular
-            </button>
-          </div>
-
-          <div class="col-md-4">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Você Recebe:</th>
-                  <th scope="col">Valor Taxado:</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">{{ mostrar ? mostrar : 0 }}</th>
-                  <th>{{ desconto ? desconto : 0 }}</th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="col-md-6"></div>
-
-          <br />
-          <hr />
-
           <div class="row text-center p-2 p-md-2">
-            <legend>Confira as taxas de cada empresa</legend>
+              <legend>Veja quanto você recebe nas vendas no crédito, débito e parcelado</legend>
+          </div>
+
+          <div *ngFor="let option of options">
+              <div class="form-check form-check-inline">
+                  <input type="radio" name="radio" id="radio-{{option.id}}" [(ngModel)]="value" [value]="option.value"
+                      [disabled]="option.estado" />
+              </div>
+              <label for="radio-{{option.id}}">{{option.id}}</label>
           </div>
 
           <div class="row">
-            <div class="col-md-4">
-              <div class="select-wrap">
-                <label for="teste">Selecione uma Marca:</label>
-                <select
-                  name="teste"
-                  class="form-select"
-                  [(ngModel)]="viewMarca"
-                  (ngModelChange)="updateInputs($event)"
-                  required
-                >
-                  <option *ngFor="let i of listaTaxa" [value]="i.id">
-                    {{ i.marca }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="select-wrap">
-                <label for="teste">Forma de Pagamento:</label>
-                <select
-                  name="teste"
-                  class="form-select"
-                  [(ngModel)]="viewPagamento"
-                  required
-                >
-                  <option *ngFor="let i of meiosPagamento" [value]="i.id">
-                    {{ i.viewValue }}
-                  </option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div id="form-wrapper">
-                <form>
+              <div class="col-md-4">
                   <div class="select-wrap">
-                    <label>Selecione algo</label>
-                    <div id="debt-amount-slider">
-                      <input
-                        type="radio"
-                        name="debt-amount"
-                        id="2"
-                        value="2"
-                        required
-                      />
-                      <label for="2">Na hora</label>
-                      <input
-                        type="radio"
-                        name="debt-amount"
-                        id="3"
-                        value="3"
-                        required
-                      />
-                      <label for="3"></label>
-                      <input
-                        type="radio"
-                        name="debt-amount"
-                        id="4"
-                        value="4"
-                        required
-                      />
-                      <label for="4"></label>
-                      <div id="debt-amount-pos"></div>
-                    </div>
+                      <label for="teste">Selecione uma Marca:</label>
+                      <select name="teste" class="form-select" [(ngModel)]="marcaView"
+                          (ngModelChange)="updateInputs($event)" required>
+                          <option *ngFor="let i of listaTaxa" [value]="i.id">
+                              {{i.marca}}
+                          </option>
+                      </select>
                   </div>
-                </form>
+
+                  <div class="select-wrap">
+                      <label for="teste">Digite o Valor:</label>
+                      <input type="number" [(ngModel)]="valor" (input)="getValor($event)" class="valor"
+                          class="form-control">
+                  </div>
               </div>
-            </div>
 
-            <div class="col-md-6">
-              <!--                            <div *ngFor="let i of listaDias">
-                                <div class="form-check text-center form-check-inline">
-                                    <input type="radio" name="radio" id="radio-{{i.id}}" [(ngModel)]="viewDias" [value]="i.id" />
-                                </div>
-                                <label for="radio-{{i.id}}">{{i.viewValue}}</label>
-                            </div> -->
-            </div>
+              <div class="col-md-4">
+                  <div class="select-wrap">
+                      <label for="teste">Forma de Pagamento:</label>
+                      <select name="teste" class="form-select" [(ngModel)]="optionView"
+                          (ngModelChange)="getOption($event)" required>
+                          <option *ngFor="let i of listaOpc" [value]="i.id">
+                              {{i.viewValue}}
+                          </option>
+                      </select>
+                  </div>
+              </div>
 
-            <div class="select-wrap">
-              <label for="teste">Você Recebe:</label>
-              <input type="hidden" class="form-control" />{{
-                mostrar ? mostrar : 0
-              }}
-=======
-                    <button type="button" (click)="calcularTaxa()" class="select-wrap" id="calc">Calcular</button>
-                </div>
-
-                <div class="col-md-4">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Você Recebe: </th>
-                            <th scope="col">Valor Taxado:</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">{{mostrar ? mostrar : 0}}</th>
-                            <th >{{desconto ? desconto : 0}}</th>
-                          </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="col-md-6">
-
-                </div>
-                
-                <br>
-                <hr>
-
-                <div class="row text-center p-2 p-md-2">
-                    <legend>Confira as taxas de cada empresa</legend>
-                </div>
-
-                <div>
-                    <div class="form-check text-center form-check-inline">
-                        <input type="radio" name="radio" id="1"/>
-                    </div>
-                    <label for="radio">Na hora</label>
-                    <div class="form-check text-center form-check-inline">
-                        <input type="radio" name="radio" id="1"/>
-                    </div>
-                    <label for="radio">Em 14 Dias</label>
-                    <div class="form-check text-center form-check-inline">
-                        <input type="radio" name="radio" id="1"/>
-                    </div>
-                    <label for="radio">Em 30 Dias</label>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="select-wrap">
-                            <label for="teste">Selecione uma Marca:</label>
-                            <select name="teste" class="form-select" [(ngModel)]="viewMarca"
-                                (ngModelChange)="updateInputs($event)" required>
-                                <option *ngFor="let i of listaTaxa" [value]="i.id">
-                                    {{i.marca}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="select-wrap">
-                            <label for="teste">Forma de Pagamento:</label>
-                            <select name="teste" class="form-select" [(ngModel)]="viewPagamento" required>
-                                <option *ngFor="let i of meiosPagamento" [value]="i.id">
-                                    {{i.viewValue}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">À vista: </th>
-                                <th scope="col">Parcelado:</th>
-                                <th scope="col">Oberservação:</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">{{mostrar ? mostrar : 0}}</th>
-                                <th >{{desconto ? desconto : 0}}</th>
-                                <th >{{desconto ? desconto : 0}}</th>
-                              </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
->>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
-            </div>
+              <div class="col-md-4">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Você Recebe: </th>
+                          <th scope="col">Valor Taxado:</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{mostrar ? mostrar : 0}}</th>
+                          <th >{{desconto ? desconto : 0}}</th>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <button type="button" (click)="calcularTaxa()" class="select-wrap" id="calc">Calcular</button>
           </div>
-        </div>
       </div>
-    </div>
-<<<<<<< HEAD
-  </div>
 
-  <section>
-=======
-</div>
->>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
-    <!-- <div class="square">
-    <legend></legend>
-    <h1>Square</h1>
-    <p>This div will maintain its aspect ratio.</p>
-</div>
-  
-  <div class="wide">
-    <h1>Wide</h1>
-    <p>This div will maintain its aspect ratio.</p>
+      <br>
+      <br>
+      <br>
+      
+      <div class="box">
+          <div class="row text-center p-2 p-md-2">
+              <legend>Confira as taxas de cada empresa</legend>
+          </div>
+
+          <div>
+              <div class="form-check text-center form-check-inline">
+                  <input type="radio" name="radio" id="radio-3" [(ngModel)]="viewDias" [value]="3"/>
+              </div>
+              <label for="radio-3">Na hora</label>
+              <div class="form-check text-center form-check-inline">
+                  <input type="radio" name="radio" id="radio-4" [(ngModel)]="viewDias" [value]="4"/>
+              </div>
+              <label for="radio-4">Em 14 Dias</label>
+              <div class="form-check text-center form-check-inline">
+                  <input type="radio" name="radio" id="radio-5" [(ngModel)]="viewDias" [value]="5"/>
+              </div>
+              <label for="radio-5">Em 30 Dias</label>
+          </div>
+
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="select-wrap">
+                      <label for="teste">Selecione uma Marca:</label>
+                      <select name="teste" class="form-select" [(ngModel)]="viewMarca"
+                          (ngModelChange)="getMarca($event)" required>
+                          <option *ngFor="let i of listaTaxa" [value]="i.id">
+                              {{i.marca}}
+                          </option>
+                      </select>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="select-wrap">
+                      <label for="teste">Forma de Pagamento:</label>
+                      <select name="teste" class="form-select" [(ngModel)]="viewPagamento" (ngModelChange)="getFormaPagamento($event)" required>
+                          <option *ngFor="let i of meiosPagamento" [value]="i.id">
+                              {{i.viewValue}}
+                          </option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">À vista: </th>
+                          <th scope="col">Parcelado:</th>
+                          <th scope="col">Oberservação:</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{aVista ? aVista : 0}}</th>
+                          <th >{{Parcelado ? Parcelado : 0}}</th>
+                          <th >{{Obs ? Obs : ""}}</th>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <button type="button" (click)="verificarTaxas()" class="select-wrap">Calcular</button>
+          </div>
+      </div>
   </div>
-  
-  <div class="tall">
-    <h1>Tall</h1>
-    <p>This div will maintain its aspect ratio.</p>
-  </div> -->
-<<<<<<< HEAD
-  </section>
-</section>
-=======
->>>>>>> aff40026474fe21d24d91f750231f95c2f12eb9f
+</div>

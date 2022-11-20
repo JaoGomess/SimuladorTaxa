@@ -12,16 +12,11 @@ export class CalculadoraComponent implements OnInit {
     {id: 2, viewValue: 'Credito'}
   ];
 
-  public viewPagamento: String;
-  public viewMarca: String;
-
   public listaDias: listaTaxaDias[] = [
-    {id: 4, viewValue: '⠀⠀⠀⠀Na Hora'},
+    {id: 4, viewValue: 'Cair na Hora:'},
     {id: 5, viewValue: 'Após 14 dias:'},
     {id: 6, viewValue: 'Após 30 dias:'},
   ];
-
-  public viewDias: String;
 
   public listaTaxa: MaquinasTaxas[] = [
     {
@@ -77,6 +72,19 @@ export class CalculadoraComponent implements OnInit {
     { id: 18, value: 17, viewValue: '17 Parcelas' },
     { id: 19, value: 18, viewValue: '18 Parcelas' }
   ];
+
+  /**
+   * @author João Gomes
+   * @description 
+   * @type String;
+  */
+
+  public viewPagamento: String;
+  public viewMarca: any;
+  public viewDias: any;
+  public aVista: Number;
+  public Parcelado: Number;
+  public Obs: String;
 
   /**
    * @author João Gomes
@@ -251,4 +259,77 @@ export class CalculadoraComponent implements OnInit {
         }
     }
   }
+
+  /* Confira as taxas de cada empresa */
+
+  public listaT: MaquinasTaxas[] = [
+    {
+      id: 1,
+      marca: "PagSeguro",
+      infoGeral: [
+        { vista: 1.99, obsVista: "Após um ano a taxa passará a ser de 2.39%", creditoVista: 4.48, creditoParcelado: 0.059 }
+      ],
+      after14: [{ vista: 4.99, parcelado: 5.59 }],
+      after30: [{ vista: 4.99, parcelado: 5.59 }]
+    },
+    {
+      id: 2,
+      marca: "Cielo",
+      aluguel: true,
+      valorPorParcela: 0.029,
+      aluguelOptions: [{ vista: 0.019, creditoVista: 0.049, creditoParcelado: 0.049 }],
+      infoGeral: [
+        { vista: 0.023, creditoVista: 0.049, creditoParcelado: 0.059 }
+      ],
+      after14: [{ vista: 0.0, parcelado: 0.0 }],
+      after30: [{ vista: 0.0, parcelado: 0.0 }]
+    },
+    {
+      id: 3,
+      marca: "MercadoPago",
+      infoGeral: [
+        { vista: 1.99, creditoVista: 4.74}
+      ],
+      after14: [{ vista: 3.79 }],
+      after30: [{ vista: 3.03 }]
+    },
+  ];
+
+  getMarca(get) {
+    this.marcaLista = this.listaTaxa[get - 1];
+  }
+
+  public formaPag: Object;
+
+  getFormaPagamento(opc) {
+    return this.formaPag = this.meiosPagamento[opc - 1];
+  }
+
+  getOptions(optionValue) {
+    return this.optionObject = this.listaOpc[optionValue - 1], this.optionID = this.listaOpc[optionValue - 1].value;
+  }
+
+  verificarTaxas() {
+    if (!this.viewMarca) return alert("Selecione alguma marca");
+    if (!this.formaPag) return alert("Selecione alguma forma de pagamento");
+    if (!this.viewDias) return alert("Selecione alguma opção das taxas");
+    
+    switch(this.viewDias) {
+      case 3:
+        if (this.viewMarca == 2 || this.viewMarca == 3) this.Obs = "";
+        if (this.listaT[this.viewMarca - 1].infoGeral[0].obsVista !== undefined) {
+          this.Obs = this.listaT[this.viewMarca - 1].infoGeral[0].obsVista;
+        } else {
+
+        }
+          
+      break;
+      case 4:
+
+      break;
+      case 5:
+
+      break;
+    }
+  } 
 }
