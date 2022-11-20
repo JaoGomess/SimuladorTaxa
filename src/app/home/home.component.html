@@ -81,6 +81,44 @@
           </p>
     </div>
     <!-- Modal do fomrulario para exportar para e-mail -->
+    <div class="row">
+        <div class="p-3 p-md-3">
+            <legend>Comparador de maquininhas:</legend>
+        </div>
+        <div class="col-md-2">
+            <label for="teste">Selecione uma maquininha:</label>
+            <select name="teste" class="form-select" [(ngModel)]="opcPrimeiraMaquina"
+                 required>
+                <option *ngFor="let i of listaMaquininhas" [value]="i.id">
+                    {{i.viewValue}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="teste">Selecione uma maquininha:</label>
+            <select name="teste" class="form-select" [(ngModel)]="opcSegundaMaquina"
+                 required>
+                <option *ngFor="let i of listaMaquininhas" [value]="i.id">
+                    {{i.viewValue}}
+                </option>
+            </select>
+        </div>
+<!--         <div class="col-md-3">
+            <label for="teste">Selecione uma maquininha:</label>
+            <select name="teste" class="form-select" [(ngModel)]="opcTerceiraMaquina"
+                 required>
+                <option *ngFor="let i of listaMaquininhas" [value]="i.id">
+                    {{i.viewValue}}
+                </option>
+            </select>
+        </div> -->
+        <div class="col-md-3 p-3">
+            <div>
+                <button class="btn btn-lg btn-primary back-button-modal" (click)="open(content)">Exportar Relatório</button>
+            </div>
+        </div>
+    </div>
+
     <ng-template #content let-c="close" let-d="dismiss">
         <div class="modal-header">
             <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
@@ -91,24 +129,22 @@
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <label>Insira o seu Nome Completo:</label>
-                        <input type="text" name="nome"  class="form-control" required>
+                        <input type="text" name="nome"  [(ngModel)]="nome" class="form-control" required>
                     </div>
                     <div class="col-md-12">
                         <label>Insira o seu Melhor E-mail:</label>
-                        <input type="email" name="email" class="form-control" required>
+                        <input type="email" name="email" [(ngModel)]="email" class="form-control" required>
                     </div>   
-                </div>  
+                </div>
             </form>
         </div>
         <div class="modal-footer">
-           <!--  <div class="col-md-3">
-                        <button class="btn btn-primary">Exportar</button>
-                    </div> -->
-            <button type="button" class="btn btn-success" (click)="c('Save click')">Exportar</button>
-        </div>
+          <form ngNativeValidate>
+            <button type="button" class="btn btn-success" (click)="register()">Exportar</button>
+          </form>
+        </div> 
+
     </ng-template>
-    
-    <button class="btn btn-lg btn-primary back-button-modal" (click)="open(content)">Exportar Relatório</button>
+
   </body>
 </section>
-
