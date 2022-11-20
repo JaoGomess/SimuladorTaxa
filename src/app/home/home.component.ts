@@ -11,16 +11,17 @@ import { ServiceService } from '../services/service.service';
 export class HomeComponent implements OnInit {
 
   public listaMaquininhas: any[] = [
-    {id: 1, viewValue: "Moderninha pró", key: 1}, //
+    {id: 1, viewValue: "Moderninha pró", key: 1},
     {id: 2, viewValue: "MinizinhaNFC", key: 1},
     {id: 3, viewValue: "Moderninha Smart 2", key: 1},
-    {id: 4, viewValue: "Moderninha pró", key: 1},
-    {id: 5, viewValue: "Point Mini NFC 1", key: 2}, //
-    {id: 6, viewValue: "Point Pro 2", key: 2},
-    {id: 7, viewValue: "Point Smart", key: 2},
-    {id: 8, viewValue: "CIELO Flash", key: 3},
-    {id: 9, viewValue: "CIELO LIO", key: 3},
-    {id: 10, viewValue: "CIELO ZIP", key: 3},
+      
+    {id: 4, viewValue: "Point Mini NFC 1", key: 2},
+    {id: 5, viewValue: "Point Pro 2", key: 2},
+    {id: 6, viewValue: "Point Smart", key: 2},
+    
+    {id: 7, viewValue: "CIELO Flash", key: 3},
+    {id: 8, viewValue: "CIELO LIO", key: 3},
+    {id: 9, viewValue: "CIELO ZIP", key: 3},
   ];
 
   public opcPrimeiraMaquina: any;
