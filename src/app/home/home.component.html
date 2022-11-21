@@ -1,0 +1,118 @@
+<main>
+    <div class="joaozinho">
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">SimuTax</h1>
+                    <p class="lead text-muted">Com a Simutax, você pode comparar as taxas e escolher a maquininha que mais se encaixa no seu modelo de negócio.</p>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/calculadora']">Simular Taxas</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form ngNativeValidate>
+                <legend>Envio de Relatorio para E-mail</legend>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <label>Insira o seu Nome Completo:</label>
+                        <input type="text" name="nome"  [(ngModel)]="nome" class="form-control" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label>Insira o seu Melhor E-mail:</label>
+                        <input type="email" name="email" [(ngModel)]="email" class="form-control" required>
+                    </div>   
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <form ngNativeValidate>
+            <button type="button" class="btn btn-success" (click)="register()">Exportar</button>
+          </form>
+        </div>
+    </ng-template>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://assets.pagseguro.com.br/ps-website-assets/v15.102.3/img/_pswn/moderninha-smart-2/large/business-management-device.png">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/pagseguro']">Saiba Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://www.cielo.com.br/assets_cielo/home/clientInstallment/mobile.png">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/cielo']">Saiba Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://media.discordapp.net/attachments/750481709887389696/1044071135060426832/point-pro-2-mobile--d712dfb0.png" class="card-img-top">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/mp']">Saiba Mais</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="tall">
+            <div class="box">
+              <div class="row text-center p-2 p-md-2">
+                <legend>Comparador</legend>
+              </div>
+          
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="teste">Selecione uma maquininha:</label>
+                  <select name="teste" class="form-select" [(ngModel)]="opcPrimeiraMaquina"
+                      required>
+                      <option *ngFor="let i of listaMaquininhas" [value]="i.id">
+                          {{i.viewValue}}
+                      </option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="teste">Selecione uma maquininha:</label>
+                    <select name="teste" class="form-select" [(ngModel)]="opcSegundaMaquina"
+                        required>
+                        <option *ngFor="let i of listaMaquininhas" [value]="i.id">
+                            {{i.viewValue}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4 p-3">
+                  <div>
+                      <button class="btn btn-lg btn-primary back-button-modal" (click)="open(content)">Exportar Relatório</button>
+                  </div>
+               </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</main>

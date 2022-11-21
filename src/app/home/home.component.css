@@ -17,19 +17,13 @@
     /* background: url('../../assets/imgs/error404.png'); */
 }
 
-.cardapio-img {
-    border-radius: 1rem;
-    width: 75%;
-    height: auto;
-    margin: auto;
-    display: block;
-  }
 
-  .cardapio {
-    margin: 1px;
-    float: left;
-    display: flex;
-  }
+
+.cardapio {
+  margin: 1px;
+  float: left;
+  display: flex;
+}
 
   #corpo {
     height: 30rem; /* 1rem = 16px */
@@ -46,7 +40,7 @@ legend{
 
 .tall {
     width: 50%;
-    height: 15vw;
+    height: 7vw;
 }
 
 *, *:before, *:after {
@@ -70,4 +64,8 @@ legend{
     padding: 1em;
     background: rgba(#214050,.5);
     box-shadow: 0 0 0 1px rgba(#214050,.6) inset;
+}
+
+.joaozinho {
+  background-image: url(https://media.discordapp.net/attachments/729192010023436349/777137074222006302/welcome.png);
 }
