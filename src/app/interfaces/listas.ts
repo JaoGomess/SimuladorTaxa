@@ -6,7 +6,8 @@ export interface lista {
 
 export interface listaPagamentos {
     id: Number,
-    viewValue: String
+    viewValue: String,
+    estado: Boolean
 }
 
 export interface listaTaxaDias {

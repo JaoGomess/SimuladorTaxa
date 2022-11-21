@@ -7,16 +7,7 @@ styleUrls: ['./calculadora.component.css']
 })
 export class CalculadoraComponent implements OnInit {
 
-  public meiosPagamento: listaPagamentos[] = [
-    {id: 1, viewValue: 'Débito'},
-    {id: 2, viewValue: 'Credito'}
-  ];
 
-  public listaDias: listaTaxaDias[] = [
-    {id: 4, viewValue: 'Cair na Hora:'},
-    {id: 5, viewValue: 'Após 14 dias:'},
-    {id: 6, viewValue: 'Após 30 dias:'},
-  ];
 
   public listaTaxa: MaquinasTaxas[] = [
     {
@@ -44,7 +35,7 @@ export class CalculadoraComponent implements OnInit {
       id: 3,
       marca: "MercadoPago",
       infoGeral: [
-        { vista: 0.019, creditoVista: 0.0479}
+        { vista: 0.019, creditoVista: 0.0474}
       ],
       after14: [{ vista: 3.79 }],
       after30: [{ vista: 3.03 }]
@@ -317,7 +308,7 @@ export class CalculadoraComponent implements OnInit {
       id: 1,
       marca: "PagSeguro",
       infoGeral: [
-        { vista: 1.99, obsVista: "Após um ano a taxa passará a ser de 2.39%", creditoVista: 4.48, creditoParcelado: 0.059 }
+        { vista: 1.99, obsVista: "Após um ano a taxa passará a ser de 2.39%", creditoVista: 4.48, creditoParcelado: 5.59 }
       ],
       after14: [{ vista: 4.99, parcelado: 5.59 }],
       after30: [{ vista: 4.99, parcelado: 5.59 }]
@@ -329,7 +320,7 @@ export class CalculadoraComponent implements OnInit {
       valorPorParcela: 0.029,
       aluguelOptions: [{ vista: 0.019, creditoVista: 0.049, creditoParcelado: 0.049 }],
       infoGeral: [
-        { vista: 0.023, creditoVista: 0.049, creditoParcelado: 0.059 }
+        { vista: 2.39, creditoVista: 5.59, creditoParcelado: 5.59 }
       ],
       after14: [{ vista: 0.0, parcelado: 0.0 }],
       after30: [{ vista: 0.0, parcelado: 0.0 }]
@@ -346,18 +337,34 @@ export class CalculadoraComponent implements OnInit {
   ];
 
   getMarca(get) {
-    this.marcaLista = this.listaTaxa[get - 1];
+    if (get -1 == 1) 
+      this.ultimoDias = true;
+    else 
+      this.ultimoDias = false;
   }
 
   public formaPag: Object;
 
   getFormaPagamento(opc) {
-    return this.formaPag = this.meiosPagamento[opc - 1];
+    this.formaPag = this.meiosPagamento[opc - 1];
   }
 
   getOptions(optionValue) {
     return this.optionObject = this.listaOpc[optionValue - 1], this.optionID = this.listaOpc[optionValue - 1].value;
   }
+
+  public meiosPagamento: listaPagamentos[] = [
+    {id: 1, viewValue: 'Débito', estado: false},
+    {id: 2, viewValue: 'Credito', estado: false}
+  ];
+
+  public listaDias: listaTaxaDias[] = [
+    {id: 4, viewValue: 'Cair na Hora:'},
+    {id: 5, viewValue: 'Após 14 dias:'},
+    {id: 6, viewValue: 'Após 30 dias:'},
+  ];
+
+  public ultimoDias: boolean = false;
 
   verificarTaxas() {
     if (!this.viewMarca) return alert("Selecione alguma marca");
@@ -365,20 +372,76 @@ export class CalculadoraComponent implements OnInit {
     if (!this.viewDias) return alert("Selecione alguma opção das taxas");
     
     switch(this.viewDias) {
-      case 3:
-        if (this.viewMarca == 2 || this.viewMarca == 3) this.Obs = "";
+      case 3: /* na hora */
         if (this.listaT[this.viewMarca - 1].infoGeral[0].obsVista !== undefined) {
-          this.Obs = this.listaT[this.viewMarca - 1].infoGeral[0].obsVista;
+          if (this.formaPag['id'] == 1) {
+            this.Obs = this.listaT[this.viewMarca - 1].infoGeral[0].obsVista;
+            this.aVista = this.listaT[this.viewMarca - 1].infoGeral[0].vista;
+            this.Parcelado = 0;
+          } else { this.Obs = ""; this.aVista = 0;this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoParcelado; }
         } else {
-
+          this.Obs = "";
+          this.aVista = 0;
+          this.Parcelado = 0;
+          if (this.listaT[this.viewMarca - 1].id === 2) {
+            if (this.formaPag['id'] == 1) { /* Debito */
+              this.aVista = this.listaT[this.viewMarca - 1].infoGeral[0].vista;
+              this.Obs = "Na cielo, não existe as taxas em 14 ou 30 dias."
+              this.Parcelado = 0;
+            } else { this.aVista = 0;
+              this.Obs = "Na cielo, não existe as taxas em 14 ou 30 dias."
+              this.Parcelado = this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoParcelado
+            }
+          } else {
+            if (this.formaPag['id'] == 1) {
+              this.Obs = "";
+              this.Parcelado = 0;
+              this.aVista = this.listaT[this.viewMarca - 1].infoGeral[0].vista;
+            } else {
+              this.Obs = "";
+              this.aVista = 0;
+              this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoVista;
+            }
+          }
         }
-          
       break;
-      case 4:
-
+      case 4: /* 14 */
+        this.Obs = "";
+        if (this.listaT[this.viewMarca - 1].infoGeral[0].obsVista !== undefined) {
+          if (this.formaPag['id'] == 1) {
+            this.aVista = this.listaT[this.viewMarca - 1].after14[0].vista;
+            this.Parcelado = 0;
+          } else { this.Obs = ""; this.aVista = 0; this.Parcelado = this.listaT[this.viewMarca - 1].after14[0].parcelado; }
+        } else {
+          if (this.formaPag['id'] == 1) {
+            this.Obs = "";
+            this.Parcelado = 0;
+            this.aVista = this.listaT[this.viewMarca - 1].after14[0].vista;
+          } else {
+            this.Obs = "Não foi possível encontrar o valor do parcelado";
+            this.aVista = 0;
+            this.Parcelado = 0;
+          }
+        }
       break;
-      case 5:
-
+      case 5: /* 30 */
+        this.Obs = "";
+        if (this.listaT[this.viewMarca - 1].infoGeral[0].obsVista !== undefined) {
+          if (this.formaPag['id'] == 1) {
+            this.aVista = this.listaT[this.viewMarca - 1].after30[0].vista;
+            this.Parcelado = 0;
+          } else { this.Obs = ""; this.aVista = 0; this.Parcelado = this.listaT[this.viewMarca - 1].after30[0].parcelado; }
+        } else {
+          if (this.formaPag['id'] == 1) {
+            this.Obs = "";
+            this.Parcelado = 0;
+            this.aVista = this.listaT[this.viewMarca - 1].after14[0].vista;
+          } else {
+            this.Obs = "Não foi possível encontrar o valor do parcelado";
+            this.aVista = 0;
+            this.Parcelado = 0;
+          }
+        }
       break;
     }
   } 

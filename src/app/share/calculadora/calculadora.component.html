@@ -78,11 +78,11 @@
             </div>
             <label for="radio-3">Na hora</label>
             <div class="form-check text-center form-check-inline">
-                <input type="radio" name="radio" id="radio-4" [(ngModel)]="viewDias" [value]="4" />
+                <input type="radio" name="radio" id="radio-4" [(ngModel)]="viewDias" [value]="4" [disabled]="ultimoDias"/>
             </div>
             <label for="radio-4">Em 14 Dias</label>
             <div class="form-check text-center form-check-inline">
-                <input type="radio" name="radio" id="radio-5" [(ngModel)]="viewDias" [value]="5" />
+                <input type="radio" name="radio" id="radio-5" [(ngModel)]="viewDias" [value]="5" [disabled]="ultimoDias"/>
             </div>
             <label for="radio-5">Em 30 Dias</label>
         </div>
@@ -93,7 +93,7 @@
                     <label for="teste">Selecione uma Marca:</label>
                     <select name="teste" class="form-select" [(ngModel)]="viewMarca" (ngModelChange)="getMarca($event)"
                         required>
-                        <option *ngFor="let i of listaTaxa" [value]="i.id">
+                        <option *ngFor="let i of listaT" [value]="i.id">
                             {{i.marca}}
                         </option>
                     </select>
