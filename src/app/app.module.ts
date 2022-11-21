@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './share/page-not-found/page-not-found.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { CompareComponent } from './share/compare/compare.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Imports material.angular.io */
@@ -25,7 +24,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule} from '@angular/forms';
-import { CompareDateComponent } from './share/compare-date/compare-date.component';
 
 
 @NgModule({
@@ -34,12 +32,10 @@ import { CompareDateComponent } from './share/compare-date/compare-date.componen
     PageNotFoundComponent,
     FooterComponent,
     HomeComponent,
-    CompareComponent,
     MercadoPagoComponent,
     CieloComponent,
     PagseguroComponent,
-    CalculadoraComponent,
-    CompareDateComponent
+    CalculadoraComponent
   ],
   imports: [
     BrowserModule,
