@@ -67,5 +67,10 @@ legend{
 }
 
 .joaozinho {
-  background-image: url(https://media.discordapp.net/attachments/729192010023436349/777137074222006302/welcome.png);
+  background-image: url(https://cdn.discordapp.com/attachments/951651556019798051/1044350327236874312/fundu.png);
+}
+#colorbutton{
+  background-color: #FFFC00;
+  color: black;
+  border-color: #FFFC00;
 }
