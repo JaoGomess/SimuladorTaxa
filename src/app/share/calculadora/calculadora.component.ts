@@ -44,7 +44,7 @@ export class CalculadoraComponent implements OnInit {
       id: 3,
       marca: "MercadoPago",
       infoGeral: [
-        { vista: 1.99, creditoVista: 4.74}
+        { vista: 0.019, creditoVista: 0.0479}
       ],
       after14: [{ vista: 3.79 }],
       after30: [{ vista: 3.03 }]
@@ -229,10 +229,60 @@ export class CalculadoraComponent implements OnInit {
       this.calcular(this.optionID, this.valor, this.marcaLista['aluguelOptions'][0], this.marcaLista['valorPorParcela']);
     } else if (this.marcaLista == this.listaTaxa[2]) {
       // Marca: Mercado Pago
+      this.calcularMercadoPago(this.optionID, this.valor, this.marcaLista['infoGeral'][0]);
 
     } else {
       // Marcas: Cielo ou PagSeguro
       this.calcular(this.optionID, this.valor, this.marcaLista['infoGeral'][0])
+    }
+  }
+
+
+  calcularMercadoPago(type, money, parcela?: Object) {
+    var subtrair;
+    switch(type) {
+      case 99:
+        subtrair = money * parcela['vista']
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 100:
+        subtrair = money * parcela['creditoVista'];
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 2:
+        subtrair = money * 0.0459;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 3:
+        subtrair = money * 0.0597;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 4:
+        subtrair = money * 0.0733;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 5:
+        subtrair = money * 0.0866;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 6:
+        subtrair = money * 0.0996;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 7:
+        subtrair = money * 0.1124;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 8:
+        subtrair = money * 0.1250;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 9:
+        subtrair = money * 0.1373;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 10:
+        subtrair = money * 0.1493;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 11:
+        subtrair = money * 0.1612;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      case 12:
+        subtrair = money * 0.1728;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
+      default:
+        subtrair = money * 0.1728;
+        return this.mostrar = money - subtrair, this.desconto = subtrair;
     }
   }
   
