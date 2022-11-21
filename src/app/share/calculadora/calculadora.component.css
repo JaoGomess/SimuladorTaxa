@@ -49,3 +49,8 @@ select {
   color: white;
   background-color: #04345C;
 }
+
+.valor {
+  background-color: #ebebeb;
+  border:0px;
+}
