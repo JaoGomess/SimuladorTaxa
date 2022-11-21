@@ -17,6 +17,29 @@
     /* background: url('../../assets/imgs/error404.png'); */
 }
 
+.cardapio-img {
+    border-radius: 1rem;
+    width: 75%;
+    height: auto;
+    margin: auto;
+    display: block;
+  }
+
+  .cardapio {
+    margin: 1px;
+    float: left;
+    display: flex;
+  }
+
+  #corpo {
+    height: 30rem; /* 1rem = 16px */
+    border-radius: 10px 10px;
+    background: rgb(18,61,98);
+    background: linear-gradient(90deg, rgba(18,61,98,1) 0%, rgba(158,158,158,1) 50%, rgba(4,52,92,1) 100%);
+    margin: 1rem;
+    display: flex;
+  }
+
 legend{
     text-align: center;
 }
