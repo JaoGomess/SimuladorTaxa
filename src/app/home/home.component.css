@@ -16,6 +16,35 @@
     background-color: #FFFC00;
     /* background: url('../../assets/imgs/error404.png'); */
 }
+
 legend{
     text-align: center;
+}
+
+.tall {
+    width: 50%;
+    height: 15vw;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+  .square,
+  .tall,
+  .wide {
+    margin: auto;
+    padding: 1em;
+    background: rgba(#214050,.5);
+    box-shadow: 0 0 0 1px rgba(#214050,.6) inset;
+    text-align: center;
+    font-family: "Century Gothic", sans-serif;
+  }
+
+.box {
+    border: solid 1px black;
+    border-radius: 4px 4px 4px 4px;
+    margin: auto;
+    padding: 1em;
+    background: rgba(#214050,.5);
+    box-shadow: 0 0 0 1px rgba(#214050,.6) inset;
 }

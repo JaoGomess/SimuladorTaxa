@@ -46,13 +46,12 @@ export class HomeComponent implements OnInit {
     if (!this.opcPrimeiraMaquina || !this.opcSegundaMaquina) return alert(`selecione as maquinas para comparacao`)
     if (!this.email) return alert(`preencha os campos`);
     if (!this.nome) return alert(`preencha os campos`);
+    
     let userObj = {
       nome: this.nome,
-      email: this.email, /* KEY MODELO - ID - NOME */
-      keys: {primeiraMaquina: this.listaMaquininhas[this.opcPrimeiraMaquina - 1].key, segundaMaquina: this.listaMaquininhas[this.opcSegundaMaquina - 1].key}, /* Pegar a marca pela api */
+      email: this.email,
       modelos: {primeiraMaquina: this.listaMaquininhas[this.opcPrimeiraMaquina - 1].id, segundaMaquina: this.listaMaquininhas[this.opcSegundaMaquina - 1].id}
     }
-    console.log(userObj);
 
     this.http.sendEmail("http://localhost:3000/sendmail", userObj).subscribe(data => {
       let res:any = data;
