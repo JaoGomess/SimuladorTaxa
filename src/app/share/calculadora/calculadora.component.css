@@ -13,36 +13,15 @@
   padding: 2px 8px 0;
 }
 
-.valor {
-  background-color: #777;
-  border:0px;
-  color: #777;
-}
-
 select {
   background-color: #ebebeb;
   border:0px;
 }
 
-.container {
-  background-color: #E6E6E6;
-}
-
-.square {
-  width: 50%;
-  height: 50vw;
-}
-
 .wide {
   width: 100%;
-  height: 50vw;
+  height: 30vw;
 }
-
-.tall {
-  width: 50%;
-  height: 100vw;
-}
-
 
 .box {
   border: solid 1px black;
@@ -56,8 +35,7 @@ select {
 *, *:before, *:after {
   box-sizing: border-box;
 }
-.square,
-.tall,
+
 .wide {
   margin: auto;
   padding: 1em;
@@ -65,4 +43,9 @@ select {
   box-shadow: 0 0 0 1px rgba(#214050,.6) inset;
   text-align: center;
   font-family: "Century Gothic", sans-serif;
+}
+
+.botao {
+  color: white;
+  background-color: #04345C;
 }
