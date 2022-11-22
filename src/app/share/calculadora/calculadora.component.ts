@@ -378,7 +378,11 @@ export class CalculadoraComponent implements OnInit {
             this.Obs = this.listaT[this.viewMarca - 1].infoGeral[0].obsVista;
             this.aVista = this.listaT[this.viewMarca - 1].infoGeral[0].vista;
             this.Parcelado = 0;
-          } else { this.Obs = ""; this.aVista = 0;this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoParcelado; }
+          } else { 
+            this.Obs = ""; 
+            this.aVista = this.listaT[this.viewMarca - 1].infoGeral[0].creditoVista;
+            this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoParcelado; 
+          }
         } else {
           this.Obs = "";
           this.aVista = 0;
@@ -390,7 +394,8 @@ export class CalculadoraComponent implements OnInit {
               this.Parcelado = 0;
             } else { this.aVista = 0;
               this.Obs = "Na cielo, não existe as taxas em 14 ou 30 dias."
-              this.Parcelado = this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoParcelado
+              this.Parcelado = this.listaT[this.viewMarca - 1].infoGeral[0].creditoParcelado;
+              this.aVista = this.listaT[this.viewMarca - 1].infoGeral[0].creditoVista;
             }
           } else {
             if (this.formaPag['id'] == 1) {
@@ -411,7 +416,12 @@ export class CalculadoraComponent implements OnInit {
           if (this.formaPag['id'] == 1) {
             this.aVista = this.listaT[this.viewMarca - 1].after14[0].vista;
             this.Parcelado = 0;
-          } else { this.Obs = ""; this.aVista = 0; this.Parcelado = this.listaT[this.viewMarca - 1].after14[0].parcelado; }
+          } else { 
+            this.Obs = ""; 
+            this.aVista = this.listaT[this.viewMarca - 1].after14[0].vista; 
+            this.Parcelado = this.listaT[this.viewMarca - 1].after14[0].parcelado; 
+          
+          }
         } else {
           if (this.formaPag['id'] == 1) {
             this.Obs = "";
@@ -430,7 +440,11 @@ export class CalculadoraComponent implements OnInit {
           if (this.formaPag['id'] == 1) {
             this.aVista = this.listaT[this.viewMarca - 1].after30[0].vista;
             this.Parcelado = 0;
-          } else { this.Obs = ""; this.aVista = 0; this.Parcelado = this.listaT[this.viewMarca - 1].after30[0].parcelado; }
+          } else {
+            this.Obs = ""; 
+            this.aVista = this.listaT[this.viewMarca - 1].after14[0].vista; 
+            this.Parcelado = this.listaT[this.viewMarca - 1].after14[0].parcelado; 
+           }
         } else {
           if (this.formaPag['id'] == 1) {
             this.Obs = "";
